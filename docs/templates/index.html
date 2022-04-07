@@ -5,7 +5,7 @@
         <div class="container">
             <h5>NEW ARRIVALS</h5>
             <h1><span>Best Price</span> This Year</h1>
-            <p>Shoomatic offers your very comfortable time<br>on walking and excercises</p>
+            <p>ShopCon offers you a very comfortable deal<br>on sweats and tees</p>
             <button>Shop Now</button>
         </div>
     </section>
@@ -28,12 +28,14 @@
             <p>Here you can check out our new products with fair price</p>
         </div>
         <div class="row mx-auto container-fluid">
-            <div class="product text-center col-lg-3 col-md-4 col-12">
-                <img class="img-fluid mb-3" src="" alt="">
-                <h5 class="p-name"></h5>
-                <h4 class="p-price">$</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
+            {% for product in products %}
+                <div class="product text-center col-lg-3 col-md-4 col-12">
+                    <img class="img-fluid mb-3" src="{{product.image.url}}" alt="">
+                    <h5 class="p-name">{{product.name}}</h5>
+                    <h4 class="p-price">${{product.price}}</h4>
+                    <a href="{% url 'product' product.pk %}"><button class="buy-btn">Buy Now</button></a>
+                </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock %}

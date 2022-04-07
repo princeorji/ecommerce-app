@@ -1,0 +1,11 @@
+.sproduct select {
+    display: block;
+    padding: 5px 10px;
+    z-index: -1;
+}
+
+.buy-btn {
+    background: #fb774b;
+    opacity: 1;
+    transition: 0.3s all;
+}
