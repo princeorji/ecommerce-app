@@ -12,6 +12,28 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         {% block head_css_page %}{% endblock head_css_page %}
     {% endblock head_css %}
+    {% block head_scripts_section %}
+        <script>
+            var user = '{{request.user}}'
+
+            function getToken(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            const csrftoken = getToken('csrftoken');
+        </script>
+    {% endblock head_scripts_section %}
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
@@ -22,19 +44,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    <a href="{% url 'cart' %}"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <a href="{% url 'cart' %}"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                    </li>
                 </ul>   
             </div>
         </div>

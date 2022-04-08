@@ -10,7 +10,7 @@
                     <img class="text-fluid w-100 pb-1" src="{{product.image.url}}" alt="" id="MainImg">
                 </div>
                 <div class="col-lg-6 col-md-12 col-12">
-                    <h6>Home / {{product.category}}</h6>
+                    <h6><a href="{% url 'index' %}">Home</a> / {{product.category}}</h6>
                     <h3 class="py-4">{{product.name}}</h3>
                     <h2>${{product.price}}</h2>
                     <select class="my-3">
@@ -18,11 +18,13 @@
                             <option>{{size.category}}</option>
                         {% endfor %}
                     </select>
-                    <button class="buy-btn">Add To Cart</button>
+                    <button data-product={{product.id}} data-action="add" 
+                    class="buy-btn update-cart">Add To Cart</button>
                     <h4 class="mt-5 mb-3">Product Details</h4>
                     <span>{{product.description}}</span>
                 </div>
             </div>
         </div>
-    </section>    
+    </section>
+{% block page_scripts %}<script src="{% static 'js/app.js' %}"></script>{% endblock page_scripts %}    
 {% endblock %}

@@ -20,12 +20,16 @@
                             <div>
                                 <p class="mb-0">{{item.product.name}}</p>
                                 <small>Price: ${{item.product.price}}</small>
-                                <br>
-                                <a href="">Remove</a>
                             </div>
                         </div>
                     </td>
-                    <td><input type="number" value="{{item.quantity}}"></td>
+                    <td>
+                        <p class="quantity">{{item.quantity}}</p>
+                        <div class="quantity">
+                            <i data-product={{item.product.id}} data-action="add" class="fa fa-chevron-circle-up update-cart" aria-hidden="true"></i> 
+                            <i data-product={{item.product.id}} data-action="remove" class="fa fa-chevron-circle-down update-cart" aria-hidden="true"></i>
+                        </div> 
+                    </td>
                     <td>${{item.get_total}}</td>
                 </tr>
                 {% endfor %}

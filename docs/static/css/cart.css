@@ -19,14 +19,18 @@ th {
 td {
     padding: 10px 5px;
 }
-td input {
-    width: 40px;
-    height: 30px;
-    padding: 5px;
+.quantity {
+    display: inline-block;
+    padding-right:10px;
 }
-td a {
-    color: #fb774b;
-    font-size: 12px;
+.quantity i {
+    width: 12px;
+    cursor: pointer;
+    display: block;
+    transition:.1s;
+}
+.quantity i:hover {
+    opacity: .6;
 }
 td img {
     width: 80px;
